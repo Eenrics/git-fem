@@ -35,6 +35,7 @@ navigation with man
 ####
 - `git init` # initialize a git repo
 - `git log --graph --decorate` # show the commit history
+- `git log --oneline <branch-name>` # show the commit history of a branch
 - `git cat-file -p <SHA>` # show the contents of a commit
 - `tree` is a directory and `blob` is a file
 Eg. 
@@ -53,5 +54,35 @@ Eg:
 git config --add --global user.name "John Doe"
 git config --get user.name
 ```
+- A key is made up of two parts: section and keyname
+Eg:
+```bash
+git config --add fem.dev "John Doe"
+```
+- To list or get the value of a key,
+```bash
+git config --list
+git config --get-regexp fem
+git config --get fem.dev
+git config --get-all fem.dev
+cat .git/config
+```
+- To remove / unset a key,
+```bash
+git config --unset fem.dev
+git config --unset-all fem.dev
+```
+- To remove the whole section,
+```bash
+git config --remove-section fem
+```
+- Can set globally or locally
+```bash
+git config --add --global fem.dev "Global John Doe"
+git config --add --local fem.dev "Local John Doe"
+```
 - You only need the first 7 characters of SHA to identify a commit
 - The first 2 characters of SHA are used as directory names in .git/objects and the rest 18 characters are used as file names
+- To create a branch, `git branch <branch-name>`
+- You can find your branch in `.git/refs/heads/<branch-name>` as SHA
+- To go to a branch, `git checkout <branch-name>` or `git switch <branch-name>`
