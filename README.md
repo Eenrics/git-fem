@@ -87,7 +87,7 @@ git config --list
 git config --get-regexp fem
 git config --get fem.dev
 git config --get-all fem.dev
-cat .git/config
+cat .git/config # git config is a file and stored in .git/config in a toml format
 ```
 - To remove / unset a key,
 ```bash
