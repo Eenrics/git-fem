@@ -4,6 +4,7 @@ manual pages
 ```
 man man
 man git -
+man git-<opt>
 ```
 - bold text: type exactly as shown
 - italics: replace with appropriate argument
@@ -29,9 +30,10 @@ navigation with man
 
 ### Terms
 - **Repo**: a git tracked project
-- **Commit**: a point in time representing a project in its entirety
-- **Index**: a staging area where commits are prepared
+- **Commit**: a point in time representing a project in its entirety. It is sha hash of 40 characters (0-9, a-f) calculated from the content of change, author, time... .
+- **Index** / **Staging**: a staging area where commits are prepared
 - **Squash**: combining multiple commits into one
+- **Working tree**: the git repo on the file system (of your version)
 
 ### Flow
 **Untracked** --(git add)--> **Staged** --(git commit)--> **Tracked** --(git push)--> **Remote**
