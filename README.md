@@ -114,3 +114,10 @@ git config --add --local fem.dev "Local John Doe"
 # Merge
 - `git merge <branch-name>` will merge the branch into the current branch
 - If the best common ancestor for the two branches is the same as the current branch, git will do a fast forward merge (no new commit is created and it won't ask for a commit message).
+
+# Rebase
+- rebase updates the commit where the branch originally points to. It will take the commits from the branch you are on and apply them on top of the branch you are rebasing on. Then we can fast forward merge the branch.
+- `git rebase <target-branch>` will rebase the current branch on top of the branch you are rebasing on.
+    1. checkout the latest commit on <target-branch>
+    2. play one commit at a time from <current-branch>
+    3. once finished, will update<current-branch> to the current commit sha
