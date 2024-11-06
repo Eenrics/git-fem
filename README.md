@@ -30,7 +30,10 @@ navigation with man
 
 ### Terms
 - **Repo**: a git tracked project
-- **Commit**: a point in time representing a project in its entirety. It is sha hash of 40 characters (0-9, a-f) calculated from the content of change, author, time... .
+- **Commit**: a point in time representing a project in its entirety. 
+It is sha hash of 40 characters (0-9, a-f) calculated from the content of change, author, time... . 
+If you know the first 7 characters of a commit, git can identify it.
+Commit exist in `.git/objects` directory with the first 2 characters as directory name and the rest 18 characters as file name.
 - **Index** / **Staging**: a staging area where commits are prepared
 - **Squash**: combining multiple commits into one
 - **Working tree**: the git repo on the file system (of your version)
@@ -51,7 +54,9 @@ navigation with man
 
 ####
 - `git init` # initialize a git repo
-- `git log --graph --decorate` # show the commit history
+- `man git-log` # manual page for git log
+- `git log --graph --decorate` # show the commit history 
+(graph: show the branches, decorate: show the refs like branch names i.e. (HEAD -> main, origin/main, origin/HEAD)). When redirecting to a file of git log without --decorate, it will show the commit history without the refs.
 - `git log --oneline <branch-name>` # show the commit history of a branch
 - `git cat-file -p <SHA>` # show the contents of a commit
 - `tree` is a directory and `blob` is a file
