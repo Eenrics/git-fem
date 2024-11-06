@@ -122,3 +122,17 @@ git config --add --local fem.dev "Local John Doe"
     2. play one commit at a time from <current-branch>
     3. once finished, will update<current-branch> to the current commit sha
 - It alters the history of the branch. You have to force push the branch to the remote. Don't rebase a branch that is shared with others.
+
+# Head and Reflog and Cherry-pick
+- `HEAD` is a reference to the current commit. It is a pointer to the current branch.
+- It is stored in `.git/HEAD` file.
+- `Reflog` is a log of where HEAD has been. It is stored in `.git/logs/HEAD` file.
+- `git reflog` will show the reflog of HEAD. 
+- `git reflog -<number>` will show the last <number> of reflog entries. 
+- `git reflog show <branch-name>` / `git reflog <branch-name>` will show the reflog of the branch.
+- We can recover a commit that has been lost by using the reflog or a branch that has been deleted. 
+We can use the reflog sha and we can see the files that were changed using cat-file.
+Or we can merge that sha into the current branch. But this might not be the best way to do it as it can bring other previous commits that we don't want.
+- We can pick one specific commit from another branch and apply it to the current branch using cherry-pick. 
+Cherry-pick requires your working tree to be clean. (no uncommitted changes)
+- `git cherry-pick <SHA>` will apply the commit to the current branch.
