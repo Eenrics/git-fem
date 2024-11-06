@@ -1,6 +1,17 @@
+- https://theprimeagen.github.io/fem-git
+
+manual pages
 ```
 man man
+man git -
 ```
+- bold text: type exactly as shown
+- italics: replace with appropriate argument
+- `[-abc]`: any or all argument within [] are optional
+- -a|-b: options are mutually exclusive
+- argument ...: can be repeated
+- [expression]: entire expression within
+
 navigation with man
 - `j`: goes on line down
 - `k`: goes one line up
