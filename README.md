@@ -55,8 +55,8 @@ Commit exist in `.git/objects` directory with the first 2 characters as director
 ####
 - `git init` # initialize a git repo
 - `man git-log` # manual page for git log
-- `git log --graph --decorate` # show the commit history 
-(graph: show the branches, decorate: show the refs like branch names i.e. (HEAD -> main, origin/main, origin/HEAD)). When redirecting to a file of git log without --decorate, it will show the commit history without the refs.
+- `git log --graph --decorate --parents` # show the commit history 
+(graph: show the branches, decorate: show the refs like branch names i.e. (HEAD -> main, origin/main, origin/HEAD), parents: show the parent commits). When redirecting to a file of git log without --decorate, it will show the commit history without the refs.
 - `git log --oneline <branch-name>` # show the commit history of a branch
 - `git cat-file -p <SHA>` # show the contents of a commit
 - `tree` is a directory and `blob` is a file
@@ -113,3 +113,4 @@ git config --add --local fem.dev "Local John Doe"
 
 # Merge
 - `git merge <branch-name>` will merge the branch into the current branch
+- If the best common ancestor for the two branches is the same as the current branch, git will do a fast forward merge (no new commit is created and it won't ask for a commit message).
