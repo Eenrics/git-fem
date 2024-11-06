@@ -1,6 +1,6 @@
 - https://theprimeagen.github.io/fem-git
 
-manual pages
+## manual pages
 ```
 man man
 man git -
@@ -38,12 +38,16 @@ navigation with man
 ### Flow
 **Untracked** --(git add)--> **Staged** --(git commit)--> **Tracked** --(git push)--> **Remote**
 
-### Commands
+### Commands (Configs)
 - man git-<ops> # for help
 - `git config --get --global init.defaultBranch` # get the default branch
 - `git config --global --unset init.defaultBranch` # unset the default branch
 - `git config --global rerere.enabled` # check if rerere is enabled
 - `git config --global --unset rerere.enabled` # enable rerere
+- All git configs **keys** are in this shape: `<section>.<key>`. 
+- `--global` will set the config globally (for all future repos). 
+- To add a **key value**, `git config --add --global <key> "<value>"`. 
+- To view any value of git config `git config --get <key>`. Eg: `git config --add --global user.name "John Doe"`. 
 
 ####
 - `git init` # initialize a git repo
