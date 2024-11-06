@@ -105,6 +105,11 @@ git config --add --local fem.dev "Local John Doe"
 ```
 - You only need the first 7 characters of SHA to identify a commit
 - The first 2 characters of SHA are used as directory names in .git/objects and the rest 18 characters are used as file names
-- To create a branch, `git branch <branch-name>`
+- To create a branch, `git branch <branch-name>`. This will create a branch but not switch to it. To switch to it, `git checkout <branch-name>` or `git switch <branch-name>`
+- To create a branch and switch in one command, `git switch -c <branch-name>` or `git checkout -b <branch-name>`
 - You can find your branch in `.git/refs/heads/<branch-name>` as SHA
 - To go to a branch, `git checkout <branch-name>` or `git switch <branch-name>`
+- To delete a branch, `git branch -d <branch-name>`.
+
+# Merge
+- `git merge <branch-name>` will merge the branch into the current branch
