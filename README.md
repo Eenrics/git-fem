@@ -121,3 +121,4 @@ git config --add --local fem.dev "Local John Doe"
     1. checkout the latest commit on <target-branch>
     2. play one commit at a time from <current-branch>
     3. once finished, will update<current-branch> to the current commit sha
+- It alters the history of the branch. You have to force push the branch to the remote. Don't rebase a branch that is shared with others.
