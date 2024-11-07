@@ -1,0 +1,3 @@
+[submodule "git-bisect"]
+	path = git-bisect
+	url = git@github.com:ThePrimeagen/git-bisect.git
