@@ -169,6 +169,8 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git status` will show the files with conflicts with the message `both modified`.
 - `git diff` will show the changes in the file.
 - `git diff --base` will show the base file. `git diff --ours` will show the changes in the current branch. `git diff --theirs` will show the changes in the branch you are merging.
+- `git checkout --ours <file>` will keep the changes in the current branch. `git checkout --theirs <file>` will keep the changes in the branch you are merging.
+- `git checkout --theirs <file>` will keep the changes in the branch you are merging.
 - after resolving the conflicts, `git add <file>` will resolve the conflict. `git status` will not show anything as there is no change. `git commit` will commit the changes or `git merge --continue` will continue the merge.
 - `git merge --abort` will abort the merge and go back to the state before the merge.
 
@@ -183,6 +185,24 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git rebase --skip` will skip the commit that has a conflict.
 - One of the danger of using git rebase is that it alters the history of the branch and you might lose some commits.
 - The other problem is that once you have conflicts, and you have resolved them, when pulling changes from remote again, you will have conflicts again even the one you have resolved before. For this one we can use reuse recorded resolution (rerere).
+- `git rebase -i <commitish>`: This will squash multiples commits into one. i.e. `git rebase -i HEAD~3` will squash the last 3 commits into one.
 
 # Rerere
 - We have to enable rerere to use it. `git config --add rerere.enabled true`
+
+- You don't want to mix rebase and merge. If you rebase a branch and then merge it, you will have conflicts. If you merge a branch and then rebase it, you will have conflicts.
+
+# Git Log    
+- `git log --grep="<pattern>"` or `git log --grep "<pattern>"` will search for a pattern in the commit message.
+- `git log --grep="<pattern>" -p` will include the changes in the commit.
+- `git log -p -- <file1> <file2>` will show the commits of only these files.
+- `git log -S "<pattern>" -p -- <file>` will search for a pattern in the changes of a file.
+
+# Git Bisect
+- Git bisect is a binary search tool to find the commit that introduced a bug.
+- `git bisect start` will start the bisect.
+- `git bisect bad` will mark the current commit as bad.
+- `git bisect good <SHA>` will mark the commit as good. i.e. the initial commit.
+- Then we will need to repeat `git bisect bad` or `git bisect good` until we find the commit that introduced the bug.
+- `git bisect reset` will reset the bisect.
+- `git bisect run <command>` will run a command to find the commit that introduced the bug.
