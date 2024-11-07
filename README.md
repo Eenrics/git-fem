@@ -173,7 +173,7 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git merge --abort` will abort the merge and go back to the state before the merge.
 
 # Rebase Conflicts
-- when rebasing a conflict, the places of theirs and ours are reversed when compared to merge conflicts. This is because rebase checks out the branch you are rebasing and plays on top.
+- when rebasing a conflict, the places of theirs and ours are reversed when compared to merge conflicts. This is because rebase checks out the branch you are rebasing and plays on top. So `ours` is theirs changes and `theirs` is our changes.
 - `git rebase <branch-name>` will rebase the current branch on top of the branch you are rebasing on.
 - `git status` will show the files with conflicts with the message `both modified`.
 - `git diff` will show the changes in the file.
