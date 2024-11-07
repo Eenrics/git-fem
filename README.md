@@ -58,6 +58,7 @@ Commit exist in `.git/objects` directory with the first 2 characters as director
 - `git log --graph --decorate --parents` # show the commit history 
 (graph: show the branches, decorate: show the refs like branch names i.e. (HEAD -> main, origin/main, origin/HEAD), parents: show the parent commits). When redirecting to a file of git log without --decorate, it will show the commit history without the refs.
 - `git log --oneline <branch-name>` # show the commit history of a branch
+- `git log <remote-name>/<branch-name>` # show the commit history of a remote branch
 - `git cat-file -p <SHA>` # show the contents of a commit
 - `tree` is a directory and `blob` is a file
 Eg. 
@@ -136,3 +137,17 @@ Or we can merge that sha into the current branch. But this might not be the best
 - We can pick one specific commit from another branch and apply it to the current branch using cherry-pick. 
 Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git cherry-pick <SHA>` will apply the commit to the current branch.
+
+# Remote Repositories
+- remote repositories are the one that is not your current repository. It can be remotely on github, gitlab or even on your local machine.
+- `git remote` will show the remote repositories.
+- `git remote add <remote-name> <url>` will add a remote repository. i.e. `git remote add origin ../remote-repo`
+- `git remote remove <remote-name>` will remove a remote repository.
+- `git remote -v` will show the remote repositories with their urls.
+- If you have remote git source of truth repo, it is convention to name it `origin`.
+- If you forked a repo, it is conventional to name your forked repo `origin` and the original repo `upstream`.
+- `git fetch` or `git fetch <remote-name>` will fetch the remote repository. We have to merge the fetched branch to the current branch `git merge <remote-name>/<branch-name>`.
+- `git pull` or `git pull <remote-name> <branch-name>`: fetch and merge the remote branch to the current branch.
+- `git pull --rebase` or `git pull --rebase <remote-name> <branch-name>`: fetch and rebase the remote branch to the current branch.
+- `git branch --set-upstream-to=<remote-name>/<branch-name> <branch-name>`: will set the upstream branch to the remote branch.
+- `git config --add --global pull.rebase true`: will set the default pull to rebase globally.
