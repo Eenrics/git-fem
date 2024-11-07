@@ -165,7 +165,20 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 
 # Merge Conflicts
 - merge conflicts occur when two branches diverge and git cannot automatically merge them.
+- `git merge <branch-name>` will merge the branch into the current branch.
 - `git status` will show the files with conflicts with the message `both modified`.
 - `git diff` will show the changes in the file.
 - `git diff --base` will show the base file. `git diff --ours` will show the changes in the current branch. `git diff --theirs` will show the changes in the branch you are merging.
 - after resolving the conflicts, `git add <file>` will resolve the conflict. `git status` will not show anything as there is no change. `git commit` will commit the changes or `git merge --continue` will continue the merge.
+- `git merge --abort` will abort the merge and go back to the state before the merge.
+
+# Rebase Conflicts
+- when rebasing a conflict, the places of theirs and ours are reversed when compared to merge conflicts. This is because rebase checks out the branch you are rebasing and plays on top.
+- `git rebase <branch-name>` will rebase the current branch on top of the branch you are rebasing on.
+- `git status` will show the files with conflicts with the message `both modified`.
+- `git diff` will show the changes in the file.
+- `git diff --base` will show the base file. `git diff --ours` will show the changes in the branch you are rebasing. `git diff --theirs` will show the changes in the current branch.
+- after resolving the conflicts, `git add <file>` will resolve the conflict. `git status` will not show anything as there is no change. `git rebase --continue` will continue the rebase.
+- `git rebase --abort` will abort the rebase and go back to the state before the rebase.
+- `git rebase --skip` will skip the commit that has a conflict.
+- One of the danger of using git rebase is that it alters the history of the branch and you might lose some commits.
