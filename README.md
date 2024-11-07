@@ -59,6 +59,7 @@ Commit exist in `.git/objects` directory with the first 2 characters as director
 (graph: show the branches, decorate: show the refs like branch names i.e. (HEAD -> main, origin/main, origin/HEAD), parents: show the parent commits). When redirecting to a file of git log without --decorate, it will show the commit history without the refs.
 - `git log --oneline <branch-name>` # show the commit history of a branch
 - `git log <remote-name>/<branch-name>` # show the commit history of a remote branch
+- `git log -S "<search-term>"` # search for a term in the commit history
 - `git cat-file -p <SHA>` # show the contents of a commit
 - `tree` is a directory and `blob` is a file
 Eg. 
@@ -151,3 +152,20 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git pull --rebase` or `git pull --rebase <remote-name> <branch-name>`: fetch and rebase the remote branch to the current branch.
 - `git branch --set-upstream-to=<remote-name>/<branch-name> <branch-name>`: will set the upstream branch to the remote branch.
 - `git config --add --global pull.rebase true`: will set the default pull to rebase globally.
+
+# Stash
+- stash is a stack of temporary changes.
+- `git stash`: will stash the changes.
+- `git stash -m "<message>"`: will stash the changes with a message.
+- `git stash list`: will show the list of stashes.
+- `git stash show [--index <index>]`: will show the stash.
+- `git stash pop`: will apply the stash and remove it from the stash list.
+- `git stash pop --index <index>`: will apply the stash and remove it from the stash list.
+- We can use the stash to move the changes to another branch or to pull the changes from another branch and pop the stash.
+
+# Merge Conflicts
+- merge conflicts occur when two branches diverge and git cannot automatically merge them.
+- `git status` will show the files with conflicts with the message `both modified`.
+- `git diff` will show the changes in the file.
+- `git diff --base` will show the base file. `git diff --ours` will show the changes in the current branch. `git diff --theirs` will show the changes in the branch you are merging.
+- after resolving the conflicts, `git add <file>` will resolve the conflict. `git status` will not show anything as there is no change. `git commit` will commit the changes or `git merge --continue` will continue the merge.
