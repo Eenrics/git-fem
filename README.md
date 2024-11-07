@@ -182,3 +182,7 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git rebase --abort` will abort the rebase and go back to the state before the rebase.
 - `git rebase --skip` will skip the commit that has a conflict.
 - One of the danger of using git rebase is that it alters the history of the branch and you might lose some commits.
+- The other problem is that once you have conflicts, and you have resolved them, when pulling changes from remote again, you will have conflicts again even the one you have resolved before. For this one we can use reuse recorded resolution (rerere).
+
+# Rerere
+- We have to enable rerere to use it. `git config --add rerere.enabled true`
