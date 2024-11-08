@@ -221,3 +221,15 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git worktree add <path> <branch-name>`: will add a new worktree to the repo and switch to the branch. `git worktree add <path> <commitish>` will add a new worktree to the repo and switch to the commit.
 - `git worktree list`: will show the list of worktrees.
 - `git worktree remove <path>`: will remove the worktree. Or we can do `rm -rf <path>` and then `git worktree prune` to remove the worktree.
+
+# Git Tag
+- Git tags are immutable points / location in your git history.
+- `git tag <tag-name>`: will create a tag. 
+- `git tag -a <tag-name> -m "<message>"`: will create an annotated tag. 
+- `git tag -d <tag-name>`: will delete a tag. 
+- `git tag -l` or `git tag`: will list the tags.
+- `git checkout <tag-name>`: will checkout the tag, but you will be in a detached head state.
+- `git push --tags`: will push the tags to the remote. 
+- `git pull --tags`: will pull the tags from the remote.
+
+# Vig git fugitive plugin https://github.com/tpope/vim-fugitive
