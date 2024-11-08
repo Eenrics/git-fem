@@ -232,4 +232,8 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git push --tags`: will push the tags to the remote. 
 - `git pull --tags`: will pull the tags from the remote.
 
-# Vig git fugitive plugin https://github.com/tpope/vim-fugitive
+# Vim git fugitive plugin https://github.com/tpope/vim-fugitive
+# Vim env Plugin https://github.com/laytan/cloak.nvim
+
+# Extras
+- You can create info exclude file in the .git directory to exclude files from being tracked just for only you. This file is not shared with others. `touch .git/info/exclude` and add the files you want to exclude.
