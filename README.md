@@ -168,6 +168,7 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git merge <branch-name>` will merge the branch into the current branch.
 - `git status` will show the files with conflicts with the message `both modified`.
 - `git diff` will show the changes in the file.
+- `git diff --staged` will show the changes that are staged.
 - `git diff --base` will show the base file. `git diff --ours` will show the changes in the current branch. `git diff --theirs` will show the changes in the branch you are merging.
 - `git checkout --ours <file>` will keep the changes in the current branch. `git checkout --theirs <file>` will keep the changes in the branch you are merging.
 - `git checkout --theirs <file>` will keep the changes in the branch you are merging.
@@ -207,6 +208,16 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - `git bisect reset` will reset the bisect.
 - `git bisect run <command>` will run a command to find the commit that introduced the bug.
 
-# Git Revert, Git Reset and Git Restore
+# Git Revert, Git Reset, Git Restore and Worktrees
 - `git revert <commitish>`: will create a new commit that will undo the changes of the commit. It is like putting an antidote to the commit. It does not remove the commit from the history but it adds a new commit that will undo the changes.
 - We could have conflicts when reverting a commit. We can use `git revert --continue` to continue the revert, `git revert --abort` to abort the revert or `git revert --skip` to skip the commit.
+- `git reset --soft HEAD~1`: your branch walkback 1 commit and the changes are staged. You can commit the changes. This is useful to make a commit that is partially finished and you want to edit the commit and change the contents.
+- `git commit --ammend`: allows you to meld the current staged changes into the previous commit and edit the commit message. `git commit --ammend --no-edit` will amend the last commit without changing the commit message.
+- `git reset --hard`: will do the same thing as soft except it drops changes to the index and workingtree. It will destroy tracked unstaged changes and staged changes. It does not destroy untracked changes. Only destroys what git knows about. We can restore destroyed changes using reflog.
+- `git reset --hard HEAD~1`: will walk back 1 commit and destroy the changes. `git reset --hard <commitish>` will walk back to the commit and destroy the changes.
+- `git reset --hard HEAD$` will walk back to the last commit and destroy the changes. `git reset --hard HEAD@{1}` will walk back to the last commit and destroy the changes.
+- `git restore <file>`: will restore the file to the last commit. `git restore --staged <file>` will unstage the file. `git restore --source <commitish> <file>` will restore the file to the commit.
+- `git worktree add <path>`: will add a new worktree to the repo. This is useful when you want to work on a different branch without changing the current branch. You can work on the new branch and then delete the worktree. You can have multiple worktrees.
+- `git worktree add <path> <branch-name>`: will add a new worktree to the repo and switch to the branch. `git worktree add <path> <commitish>` will add a new worktree to the repo and switch to the commit.
+- `git worktree list`: will show the list of worktrees.
+- `git worktree remove <path>`: will remove the worktree. Or we can do `rm -rf <path>` and then `git worktree prune` to remove the worktree.
