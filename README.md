@@ -206,3 +206,7 @@ Cherry-pick requires your working tree to be clean. (no uncommitted changes)
 - Then we will need to repeat `git bisect bad` or `git bisect good` until we find the commit that introduced the bug.
 - `git bisect reset` will reset the bisect.
 - `git bisect run <command>` will run a command to find the commit that introduced the bug.
+
+# Git Revert, Git Reset and Git Restore
+- `git revert <commitish>`: will create a new commit that will undo the changes of the commit. It is like putting an antidote to the commit. It does not remove the commit from the history but it adds a new commit that will undo the changes.
+- We could have conflicts when reverting a commit. We can use `git revert --continue` to continue the revert, `git revert --abort` to abort the revert or `git revert --skip` to skip the commit.
